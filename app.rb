@@ -25,11 +25,11 @@ end
 
 
 message :chat?,:body do |m|
-	uri=URI.parse('http://www.google.com')
+	uri=URI.parse('http://prashant7891.appspot.comtxtweb-message=gstats+cs+101+2010')
 	host = uri.host
 	port = uri.port
 	http_session = Net::HTTP.new(host,port)
-        response = http_session.get("/")
+        response = http_session.get("txtweb-message=gstats+cs+101+2010")
  	#a=Net::HTTP.get('www.google.com', '/')
 	say m.from, "TEST #{response.body}"
 end	
