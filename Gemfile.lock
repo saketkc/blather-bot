@@ -37,4 +37,5 @@ PLATFORMS
 DEPENDENCIES
   blather
   foreman
+  nokogiri
   pony
