@@ -31,14 +31,14 @@ end
 
 
 message :chat?,:body do |m|
-	uri=URI.parse('http://prashant7891.appspot.com')
-	host = uri.host
-	port = uri.port
-	http_session = Net::HTTP.new(host,port)
-        response = http_session.get("?txtweb-message=gstats+cs+101+2010")
+	#uri=URI.parse('http://prashant7891.appspot.com')
+	#host = uri.host
+	#port = uri.port
+	#http_session = Net::HTTP.new(host,port)
+        #response = http_session.get("?txtweb-message=gstats+cs+101+2010")
  	#a=Net::HTTP.get('www.google.com', '/')
 	params = {"txtweb-message" => "gstats cs 101 2010"}
-	response = http_get("http://prashant7891.appspot.com", "/", params)
+	response = http_get("prashant7891.appspot.com", "/", params)
 	say m.from, "TEST #{response.body}"
 end	
 	
