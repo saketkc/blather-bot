@@ -29,7 +29,7 @@ message :chat?,:body do |m|
 	host = uri.host
 	port = uri.port
 	http_session = Net::HTTP.new(host,port)
-        response = http_session.get("txtweb-message=gstats+cs+101+2010")
+        response = http_session.get("?txtweb-message=gstats+cs+101+2010")
  	#a=Net::HTTP.get('www.google.com', '/')
 	say m.from, "TEST #{response.body}"
 end	
