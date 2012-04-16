@@ -31,18 +31,19 @@ end
 
 
 
-message :chat?,:body do |m|
-	#uri=URI.parse('http://prashant7891.appspot.com')
-	#host = uri.host
-	#port = uri.port
-	#http_session = Net::HTTP.new(host,port)
-        #response = http_session.get("?txtweb-message=gstats+cs+101+2010")
- 	#a=Net::HTTP.get('www.google.com', '/')
+message :chat?,:body => /gstats/i do |m|
+	body=m.body.split(" ")
+	dept = body[1]
+	course_no = body[2]
+	year = bosy[3]
 	params = {"txtweb-message" => "gstats cs 101 2010"}
-	#response = http_get("prashant7891.appspot.com", "/", params)
+	url = "http://prashant7891.appspot.com/?txtweb-message=gstats"+"#{dept}"+"#{course_no}"+"#{year}"
 	doc = Nokogiri::HTML(open "http://prashant7891.appspot.com/?txtweb-message=gstats+cs+101+2010")
         response = doc.at('body').inner_text
-	say m.from, "TEST #{response}"
+	say m.from, "#{response}"
 end	
 	
+message :chat?,:body do |m|
+	say m.from, "Incorrect format"
+end
 
