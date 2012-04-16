@@ -35,10 +35,10 @@ message :chat?,:body => /gstats/i do |m|
 	body=m.body.split(" ")
 	dept = body[1]
 	course_no = body[2]
-	year = bosy[3]
+	year = body[3]
 	params = {"txtweb-message" => "gstats cs 101 2010"}
-	url = "http://prashant7891.appspot.com/?txtweb-message=gstats"+"#{dept}"+"#{course_no}"+"#{year}"
-	doc = Nokogiri::HTML(open "http://prashant7891.appspot.com/?txtweb-message=gstats+cs+101+2010")
+	url = "http://prashant7891.appspot.com/?txtweb-message=gstats+"+"#{dept}+"+"#{course_no}+"+"#{year}"
+	doc = Nokogiri::HTML(open url)
         response = doc.at('body').inner_text
 	say m.from, "#{response}"
 end	
