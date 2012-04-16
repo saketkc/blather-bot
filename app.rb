@@ -7,7 +7,7 @@ require 'pony'
 require 'net/http'
 require 'uri'
 require 'cgi'
-
+require 'nokogiri'
 def http_get(domain,path,params)
     return Net::HTTP.get(domain, "#{path}?".concat(params.collect { |k,v| "#{k}=#{CGI::escape(v.to_s)}" }.reverse.join('&'))) if not params.nil?
     return Net::HTTP.get(domain, path)
@@ -38,7 +38,9 @@ message :chat?,:body do |m|
         #response = http_session.get("?txtweb-message=gstats+cs+101+2010")
  	#a=Net::HTTP.get('www.google.com', '/')
 	params = {"txtweb-message" => "gstats cs 101 2010"}
-	response = http_get("prashant7891.appspot.com", "/", params)
+	#response = http_get("prashant7891.appspot.com", "/", params)
+	doc = Nokogiri::HTML(open("http://prashant7891.appspot.com/?txtweb-message=gstats+cs+101+2010"))
+        reponse = doc.css("#body").to_s
 	say m.from, "TEST #{response}"
 end	
 	
