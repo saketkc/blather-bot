@@ -4,6 +4,7 @@ require 'blather'
 require 'blather/client'
 require 'blather/stanza'
 require 'pony'
+require 'net/http'
 =begin
 #$users = {"aakanksha" => {"name"=>"Aakanksha Dimri"},"rajveer"=>"Rajveer Rathore","advait"=>"Advait Deshpande","alankar"=>"Alankar Saxena","amit"=>"Amit Mangtani","anuj"=>"Anuj Shah","anoop"=>"Anoop Date","anurag"=>"Anurag Khandelwal","deeksha"=>"Deeksha Saxena","dhiren"=>"Dhiren Sonigra","gagan"=>"Gagandeep Makkar","giri"=>"Giri Prashant Subramiam","kartik"=> "Kartik Kacholia","rahul"=>"Rahul Mallapu","saket"=>"Saket Choudhary","raunak"=>"Raunka Bardia","sankalp"=>"Sankal Goyal","sayali"=>"Sayali Bhosekar","shardul"=>"Shardul Gaur" ,"shivi"=>"Shivi Jain","sidd"=>"Siddharth Thakur" ,"gagrani" =>"Vinayak Gagrani","khatri"=>"Vishal Khatri","vivek"=>"Vivek Agrwal","yash"=>"Yash Shah"}
 $users = "rajveerrathore11020@gmail.com,aakanksha023@gmail.com,advaitd7@gmail.com,alankar111@gmail.com,amitmangtani.iitb@gmail.com,anujnshah@gmail.com,anoopdate@gmail.com,sahil814@gmail.com,angeleyes1991@gmail.com,dhirensonigra016@gmail.com,gaganatiitb@gmail.com,prashant7891@gmail.com,kartikkacholia@gmail.com,rahul.mallapur@gmail.com,raunakbardia@gmail.com,rohitluhadia@gmail.com,saketkc@gmail.com,sankalpdamani@gmail.com,internship.iitb@gmail.com".split(",")
@@ -79,28 +80,12 @@ before (:message) do |m|
 	true	
 end
 =end	
-message :chat?,:body => /Mail/ do |m|
-    body = m.body.split(",")
-    prof_name= body[0].gsub!("Mail","")
-    prof_email = body[1]
-    if prof_name
-		if prof_email
-			say m.from, "sending mail to Prof #{prof_name}  <#{prof_email}>"
-			send_mail()
-			say m.from,"  Done"
-			
-		else
-		    say m.from, "No email provided, Ditched!"
-		end
-    else
-	say m.from,"No Prof name provided, Ditching!"
-    end	
-    
-    
-end
+ 
+
 
 message :chat?,:body do |m|
-	say m.from, "Incorrect!Format is this: _Mail ProfName,prof@univ.com_ "
+ 	a=Net::HTTP.get('www.gppgle.com', '/')
+	say m.from, "#{a.body}"
 end	
 	
 
