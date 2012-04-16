@@ -5,7 +5,7 @@ require 'blather/client'
 require 'blather/stanza'
 require 'pony'
 require 'net/http'
-
+require 'uri'
 setup 'ascbot@jabber.org','fedora'#ENV['JID'], ENV['JPASSWORD']
 
 #when_ready { write_to_stream Status.new(:available, "Now Live") }
@@ -25,8 +25,13 @@ end
 
 
 message :chat?,:body do |m|
- 	a=Net::HTTP.get('www.google.com', '/')
-	say m.from, "#{a.body}"
+	uri=URI.parse('http://www.google.com')
+	host = uri.host
+	port = uri.port
+	http_session = Net::HTTP.new(host,port)
+        response = http_session.get("/")
+ 	#a=Net::HTTP.get('www.google.com', '/')
+	say m.from, "TEST #{response.body}"
 end	
 	
 
