@@ -5,7 +5,8 @@ require 'blather/client'
 require 'blather/stanza'
 require 'pony'
 require 'net/http'
-setup 'ascgrades@jabber.org','fedora'#ENV['JID'], ENV['JPASSWORD']
+
+setup 'ascbot@jabber.org','fedora'#ENV['JID'], ENV['JPASSWORD']
 
 #when_ready { write_to_stream Status.new(:available, "Now Live") }
 when_ready {
