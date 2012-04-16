@@ -39,7 +39,7 @@ message :chat?,:body do |m|
  	#a=Net::HTTP.get('www.google.com', '/')
 	params = {"txtweb-message" => "gstats cs 101 2010"}
 	response = http_get("prashant7891.appspot.com", "/", params)
-	say m.from, "TEST #{response.body}"
+	say m.from, "TEST #{response}"
 end	
 	
 
