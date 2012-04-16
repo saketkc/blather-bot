@@ -6,6 +6,12 @@ require 'blather/stanza'
 require 'pony'
 require 'net/http'
 require 'uri'
+require 'cgi'
+
+def http_get(domain,path,params)
+    return Net::HTTP.get(domain, "#{path}?".concat(params.collect { |k,v| "#{k}=#{CGI::escape(v.to_s)}" }.reverse.join('&'))) if not params.nil?
+    return Net::HTTP.get(domain, path)
+end
 setup 'ascbot@jabber.org','fedora'#ENV['JID'], ENV['JPASSWORD']
 
 #when_ready { write_to_stream Status.new(:available, "Now Live") }
@@ -31,6 +37,8 @@ message :chat?,:body do |m|
 	http_session = Net::HTTP.new(host,port)
         response = http_session.get("?txtweb-message=gstats+cs+101+2010")
  	#a=Net::HTTP.get('www.google.com', '/')
+	params = {:txtweb-message => "gstats cs 101 2010"i}
+	response = http_get("http://prashant7891.appspot.com", "/", params)
 	say m.from, "TEST #{response.body}"
 end	
 	
