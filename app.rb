@@ -44,7 +44,7 @@ message :chat?,:body => /gstats/i do |m|
 end	
 	
 message :chat?,:body do |m|
-	say m.from, "Incorrect format: Correct Format <gstats department course_number year>"
-	say m.from, "E.g. gstats cs 101 2010 for cs101's 2010 stats !"
+	say m.from, "Incorrect format: Correct Format _<gstats department course_number year>_"
+	say m.from, "E.g. _gstats cs 101 2010 for cs101's 2010 stats!_"
 end
 
