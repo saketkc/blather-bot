@@ -41,7 +41,11 @@ message :chat?,:body => /gstats/i do |m|
         response = doc.at('body').inner_text
 	say m.from, "#{response}"
 end	
-	
+
+message :chat?,:body => /testme/i do |m|
+    say m.from,"teston"
+end
+
 message :chat?,:body do |m|
 	say m.from, "Incorrect format: Correct Format _<gstats department course_number year>_"
 	say m.from, "E.g. _gstats cs 101 2010 for cs101's 2010 stats!_"
