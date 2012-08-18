@@ -8,6 +8,7 @@ GEM
       eventmachine (>= 0.12.6)
       niceogiri (>= 0.1.0)
       nokogiri (~> 1.4.0)
+    bson (1.6.4)
     eventmachine (0.12.10)
     foreman (0.27.0)
       term-ansicolor (~> 1.0.5)
@@ -18,6 +19,8 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.17.2)
+    mongo (1.6.4)
+      bson (~> 1.6.4)
     multi_json (1.0.4)
     niceogiri (0.1.1)
       nokogiri (~> 1.4.6)
@@ -37,5 +40,6 @@ PLATFORMS
 DEPENDENCIES
   blather
   foreman
+  mongo
   nokogiri
   pony
