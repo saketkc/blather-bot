@@ -54,7 +54,15 @@ message :chat?,:body => /search/i do |m|
 end
 
 message :chat?,:body do |m|
+	start = Time.now.strftime("%y-%m-%d")
+	
+
+	#link = "http://ugacads-calendar.appspot.com/fetch?start="+2012-09-25+"&end="+2012-09-26
+	say m.from, "#{start}"
+end
+message :chat?,:body do |m|
 	say m.from, "Incorrect format: Correct Format _<gstats department course_number year>_"
 	say m.from, "E.g. _gstats cs 101 2010 for cs101's 2010 stats!_"
 end
+
 
