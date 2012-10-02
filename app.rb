@@ -54,11 +54,16 @@ message :chat?,:body => /search/i do |m|
 end
 
 message :chat?,:body do |m|
-	start = Time.now.strftime("%y-%m-%d")
+	start = Time.now.strftime("%Y-%m-%d")
+	endtime = Time.now + (24*60*60)
+	ends = endtime.strftime("%Y-%m-%d")
 	
 
-	#link = "http://ugacads-calendar.appspot.com/fetch?start="+2012-09-25+"&end="+2012-09-26
-	say m.from, "#{start}"
+	url = "http://ugacads-calendar.appspot.com/fetch?start="+"#{start}"+"&end="+"#{ends}"
+	doc = Nokogiri::HTML(open url)
+        response = doc.at('body').inner_text
+	
+	say m.from, "#{response}"
 end
 message :chat?,:body do |m|
 	say m.from, "Incorrect format: Correct Format _<gstats department course_number year>_"
