@@ -47,6 +47,7 @@ message :chat?,:body => /search/i do |m|
 	term = body[1]
 	url = "http://gymkhana.iitb.ac.in/~ugacademics/wiki/index.php?search="+"#{term}"+"&go=Go&title=Special%3ASearch"
 	say m.from, "#{url}"
+end
 message :chat?,:body => /calendar/i do |m|
     connection =  Mongo::Connection.new("mongodb://saket:fedora13@alex.mongohq.com:10054/oauth_data")
     db = connection.db["oauth_data"]
