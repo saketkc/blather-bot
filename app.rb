@@ -48,13 +48,6 @@ message :chat?,:body => /search/i do |m|
 	url = "http://gymkhana.iitb.ac.in/~ugacademics/wiki/index.php?search="+"#{term}"+"&go=Go&title=Special%3ASearch"
 	say m.from, "#{url}"
 end
-message :chat?,:body => /calendar/i do |m|
-    connection =  Mongo::Connection.new("mongodb://saket:fedora13@alex.mongohq.com:10054/oauth_data")
-    db = connection.db["oauth_data"]
-    db.a:
-    say m.from,"teston"
-
-end
 
 message :chat?,:body do |m|
 	say m.from, "Incorrect format: Correct Format _<gstats department course_number year>_"
