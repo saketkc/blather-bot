@@ -45,7 +45,7 @@ end
 message :chat?,:body => /search/i do |m|
 	body = m.body.split(" ")
 	term = body[1]
-	url = "http://gymkhana.iitb.ac.in/~ugacademics/wiki/index.php?search="+"#{term}"+"&go=Go&title=Special%3ASearch"
+	url = "<a href='http://gymkhana.iitb.ac.in/~ugacademics/wiki/index.php?search="+"#{term}"+"&go=Go&title=Special%3ASearch'>Result</a>"
 	say m.from, "#{url}"
 end
 
