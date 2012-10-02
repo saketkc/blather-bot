@@ -52,7 +52,7 @@ message :chat?,:body => /calendar/i do |m|
     connection =  Mongo::Connection.new("mongodb://saket:fedora13@alex.mongohq.com:10054/oauth_data")
     db = connection.db["oauth_data"]
     db.a:
-    say m.from,"teston"i
+    say m.from,"teston"
 
 end
 
