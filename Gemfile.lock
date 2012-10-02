@@ -13,7 +13,14 @@ GEM
     foreman (0.27.0)
       term-ansicolor (~> 1.0.5)
       thor (>= 0.13.6)
+    googl (0.6.1)
+      httparty (~> 0.8.3)
+      json (>= 1.4.6)
+    httparty (0.8.3)
+      multi_json (~> 1.0)
+      multi_xml
     i18n (0.6.0)
+    json (1.7.5)
     mail (2.3.0)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -22,6 +29,7 @@ GEM
     mongo (1.6.4)
       bson (~> 1.6.4)
     multi_json (1.0.4)
+    multi_xml (0.5.1)
     niceogiri (0.1.1)
       nokogiri (~> 1.4.6)
     nokogiri (1.4.7)
@@ -40,6 +48,7 @@ PLATFORMS
 DEPENDENCIES
   blather
   foreman
+  googl
   mongo
   nokogiri
   pony
