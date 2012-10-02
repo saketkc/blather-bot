@@ -8,6 +8,7 @@ require 'uri'
 require 'cgi'
 require 'nokogiri'
 require 'open-uri'
+require 'googl'
 def http_get(domain,path,params)
     return Net::HTTP.get(domain, "#{path}?".concat(params.collect { |k,v| "#{k}=#{CGI::escape(v.to_s)}" }.reverse.join('&'))) if not params.nil?
     return Net::HTTP.get(domain, path)
@@ -45,8 +46,11 @@ end
 message :chat?,:body => /search/i do |m|
 	body = m.body.split(" ")
 	term = body[1]
-	url = "<a href='http://gymkhana.iitb.ac.in/~ugacademics/wiki/index.php?search="+"#{term}"+"&go=Go&title=Special%3ASearch'>Result</a>"
-	say m.from, "#{url}"
+	link = "http://gymkhana.iitb.ac.in/~ugacademics/wiki/index.php?search="+"#{term}"+"&go=Go&title=Special%3ASearch"
+	client = Googl.client('saketkc@gmail.com', 'uzfmTjX1314.9839')
+	url = client.shorten(link)
+	value =  url.short_url
+	say m.from, "#{value}"
 end
 
 message :chat?,:body do |m|
