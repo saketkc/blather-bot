@@ -20,7 +20,7 @@ when_ready {
 puts "Connected ! send messages to #{jid.stripped}."
 #status = Status.new
 #status.message ="Doine"
-status=Blather::Stanza::Presence::Status.new(:available,"*Being Updated*")
+status=Blather::Stanza::Presence::Status.new(:available,"*_Reinvention_")
 write_to_stream status
 }
 subscription :request? do |s|
