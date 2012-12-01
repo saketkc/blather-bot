@@ -53,6 +53,7 @@ message :chat?,:body => /search/i do |m|
 	say m.from, "#{value}"
 end
 
+
 message :chat?,:body do |m|
 	start = Time.now.strftime("%Y-%m-%d")
 	endtime = Time.now + (24*60*60)
