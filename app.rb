@@ -49,7 +49,7 @@ message :chat?,:body => /info/i do |m|
 	course_no = body[2]
 	
 	params = {"txtweb-message" => "gstats cs 101 2010"}
-	url = "http://home.iitb.ac.in/~saket.kumar/2.php?param1=courseinfo&param2="+"#{dept}+"+"&param3="+"#{course_no}"+"&param4=0"
+	url = "http://home.iitb.ac.in/~saket.kumar/2.php?param1=courseinfo&param2="+"#{dept}"+"&param3="+"#{course_no}"+"&param4=0"
 	doc = Nokogiri::HTML(open url)
         response = doc.at('body').inner_text
 	say m.from, "#{response}"
