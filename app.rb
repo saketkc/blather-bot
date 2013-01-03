@@ -43,6 +43,17 @@ message :chat?,:body => /gstats/i do |m|
 	say m.from, "#{response}"
 end	
 
+message :chat?,:body => /info/i do |m|
+	body=m.body.split(" ")
+	dept = body[1]
+	course_no = body[2]
+	
+	params = {"txtweb-message" => "gstats cs 101 2010"}
+	url = "http://prashant7891.appspot.com/?txtweb-message=courseinfo+"+"#{dept}+"+"#{course_no}"
+	doc = Nokogiri::HTML(open url)
+        response = doc.at('body').inner_text
+	say m.from, "#{response}"
+end	
 message :chat?,:body => /search/i do |m|
 	body = m.body.split(" ")
 	term = body[1]
