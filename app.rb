@@ -13,7 +13,7 @@ def http_get(domain,path,params)
     return Net::HTTP.get(domain, "#{path}?".concat(params.collect { |k,v| "#{k}=#{CGI::escape(v.to_s)}" }.reverse.join('&'))) if not params.nil?
     return Net::HTTP.get(domain, path)
 end
-setup 'aadvark@jabber.org','fedora13'#ENV['JID'], ENV['JPASSWORD']
+setup 'aardvark@jabber.org','fedora13'#ENV['JID'], ENV['JPASSWORD']
 
 subscription :request? do |s|
 	write_to_stream s.approve!
