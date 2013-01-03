@@ -75,7 +75,7 @@ message :chat?,:body do |m|
 	write_to_stream status
 	#url = "http://ugacads-calendar.appspot.com/fetch?start="+"#{start}"+"&end="+"#{ends}"
 	#doc = Nokogiri::HTML(open url)
-        response = "ok"#doc.at('body').inner_text
+        response = "Available Options : \n 1. Grading Statistics : _gstats <dept_code> <course_number> <year>_ \n 2.Search Wiki : _search <term> to search on wiki_ \n3.Course Info : _info <dept_code> <course_number>_ \n E.g. <dept_code> : cs \n <course_number>:101\n"#doc.at('body').inner_text
 	
 	say m.from, "#{response}"
 end
