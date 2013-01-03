@@ -22,11 +22,6 @@ when_ready {
 status=Blather::Stanza::Presence::Status.new(:available,"*_Reinvention_")
 write_to_stream status
 }
-
-
-
-
-
 message :chat?,:body => /gstats/i do |m|
 	body=m.body.split(" ")
 	dept = body[1]
