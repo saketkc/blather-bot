@@ -69,14 +69,15 @@ message :chat?,:body do |m|
 	start = Time.now.strftime("%Y-%m-%d")
 	endtime = Time.now + (24*60*60)
 	ends = endtime.strftime("%Y-%m-%d")
-	
-	#if "#{m.from}"=~"aaaiitb@appspot.com" then	
-	#	status=Blather::Stanza::Presence::Status.new(:available,"#{m.body}")
-	#	write_to_stream status
-	#end
+	sender = "#{m.from}"
+	sender_a = sender.split("@")[0]	
+	if sender_a=="aaaiitb" then	
+		status=Blather::Stanza::Presence::Status.new(:available,"#{m.body}")
+		write_to_stream status
+	end
 	#url = "http://ugacads-calendar.appspot.com/fetch?start="+"#{start}"+"&end="+"#{ends}"
 	#doc = Nokogiri::HTML(open url)
         response = "Available Options : \n 1. Grading Statistics : _gstats <dept_code> <course_number> <year>_ \n 2.Search Wiki : _search <term> to search on wiki_ \n3.Course Info : _info <dept_code> <course_number>_ \n E.g. <dept_code> : cs \n <course_number>:101\n"#doc.at('body').inner_text
 	
-	say m.from, "#{m.from}"
+	say m.from, response
 end
