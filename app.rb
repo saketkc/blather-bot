@@ -15,17 +15,17 @@ def http_get(domain,path,params)
 end
 setup 'aadvark@jabber.org','fedora'#ENV['JID'], ENV['JPASSWORD']
 
+subscription :request? do |s|
+	write_to_stream s.approve!
+end
 #when_ready { write_to_stream Status.new(:available, "Now Live") }
 when_ready {
-puts "Connected ! send messages to #{jid.stripped}."
+#puts "Connected ! send messages to #{jid.stripped}."
 #status = Status.new
 #status.message ="Doine"
 status=Blather::Stanza::Presence::Status.new(:available,"*_Reinvention_")
 write_to_stream status
 }
-subscription :request? do |s|
-	write_to_stream s.approve!
-end
 
 
 
