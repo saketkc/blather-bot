@@ -70,7 +70,9 @@ message :chat?,:body do |m|
 	endtime = Time.now + (24*60*60)
 	ends = endtime.strftime("%Y-%m-%d")
 	
-
+	
+	status=Blather::Stanza::Presence::Status.new(:available,"Testing")
+	write_to_stream status
 	url = "http://ugacads-calendar.appspot.com/fetch?start="+"#{start}"+"&end="+"#{ends}"
 	doc = Nokogiri::HTML(open url)
         response = doc.at('body').inner_text
