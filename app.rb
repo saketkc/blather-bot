@@ -13,7 +13,7 @@ def http_get(domain,path,params)
     return Net::HTTP.get(domain, "#{path}?".concat(params.collect { |k,v| "#{k}=#{CGI::escape(v.to_s)}" }.reverse.join('&'))) if not params.nil?
     return Net::HTTP.get(domain, path)
 end
-setup 'ascbot@jabber.org','fedora'#ENV['JID'], ENV['JPASSWORD']
+setup 'aadvark@jabber.org','fedora'#ENV['JID'], ENV['JPASSWORD']
 
 #when_ready { write_to_stream Status.new(:available, "Now Live") }
 when_ready {
