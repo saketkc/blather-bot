@@ -38,7 +38,7 @@ message :chat?,:body => /gstats/i do |m|
 	year = body[3]
 	params = {"txtweb-message" => "gstats cs 101 2010"}
 	url = "http://prashant7891.appspot.com/?txtweb-message=gstats+"+"#{dept}+"+"#{course_no}+"+"#{year}"
-	doc = Nokogiri::HTML(open url)
+        doc = Nokogiri::HTML(open url)
         response = doc.at('body').inner_text
 	say m.from, "#{response}"
 end	
