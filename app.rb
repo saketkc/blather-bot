@@ -1,4 +1,3 @@
-
 require 'rubygems'
 require 'blather'
 require 'blather/client'
@@ -18,7 +17,6 @@ setup 'aardvark@jabber.org','fedora13'#ENV['JID'], ENV['JPASSWORD']
 subscription :request? do |s|
 	write_to_stream s.approve!
 end
-#when_ready { write_to_stream Status.new(:available, "Now Live") }
 when_ready {
 status=Blather::Stanza::Presence::Status.new(:available,"Testing")
 write_to_stream status
@@ -46,15 +44,15 @@ message :chat?,:body => /info/i do |m|
         response = doc.at('body').inner_text
 	say m.from, "#{response}"
 end	
-message :chat?,:body => /search/i do |m|
-	body = m.body.split(" ")
-	term = body[1]
-	link = "http://gymkhana.iitb.ac.in/~ugacademics/wiki/index.php?search="+"#{term}"+"&go=Go&title=Special%3ASearch"
-	client = Googl.client('saketkc@gmail.com', 'uzfmTjX1314.9839')
-	url = client.shorten(link)
-	value =  url.short_url
-	say m.from, "#{value}"
-end
+#message :chat?,:body => /search/i do |m|
+#	body = m.body.split(" ")
+#	term = body[1]
+#	link = "http://gymkhana.iitb.ac.in/~ugacademics/wiki/index.php?search="+"#{term}"+"&go=Go&title=Special%3ASearch"
+#	client = Googl.client('saketkc@gmail.com', 'uzfmTjX1314.9839')
+#	url = client.shorten(link)
+#	value =  url.short_url
+#	say m.from, "#{value}"
+#end
 
 
 message :chat?,:body do |m|
