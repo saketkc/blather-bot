@@ -44,14 +44,14 @@ message :chat?,:body => /info/i do |m|
         response = doc.at('body').inner_text
 	say m.from, "#{response}"
 end	
-#message :chat?,:body => /search/i do |m|
-#	body = m.body.split(" ")
-#	term = body[1]
-#	link = "http://gymkhana.iitb.ac.in/~ugacademics/wiki/index.php?search="+"#{term}"+"&go=Go&title=Special%3ASearch"
-#	client = Googl.client('saketkc@gmail.com', 'uzfmTjX1314.9839')
-#	url = client.shorten(link)
-#	value =  url.short_url
-#	say m.from, "#{value}"
+message :chat?,:body => /search/i do |m|
+	body = m.body.split(" ")
+	term = body[1]
+	link = "http://gymkhana.iitb.ac.in/~ugacademics/wiki/index.php?search="+"#{term}"+"&go=Go&title=Special%3ASearch"
+	client = Googl.client('saketkc@gmail.com', 'uzfmTjX1314.9839')
+	url = client.shorten(link)
+	value =  url.short_url
+	say m.from, "#{value}"
 #end
 
 
