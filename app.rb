@@ -1,6 +1,3 @@
-
-
-
 require 'rubygems'
 require 'blather'
 require 'blather/client'
@@ -55,7 +52,7 @@ message :chat?,:body => /search/i do |m|
 	url = client.shorten(link)
 	value =  url.short_url
 	say m.from, "#{value}"
-#end
+end
 
 
 message :chat?,:body do |m|
