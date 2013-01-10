@@ -18,7 +18,7 @@ subscription :request? do |s|
 	write_to_stream s.approve!
 end
 when_ready {
-status=Blather::Stanza::Presence::Status.new(:available,"Testing")
+status=Blather::Stanza::Presence::Status.new(:available,"_*Let Me Speak*_")
 write_to_stream status
 }
 message :chat?,:body => /gstats/i do |m|
