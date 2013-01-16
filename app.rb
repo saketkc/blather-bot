@@ -71,7 +71,7 @@ message :chat?,:body => /updatestatus/i do |m|
 #	end
  #       response = "Available Options : \n 1. Grading Statistics : _gstats <dept_code> <course_number> <year>_ \n 2.Search Wiki : _search <term> to search on wiki_ \n3.Course Info : _info <dept_code> <course_number>_ \n E.g. <dept_code> : cs \n <course_number>:101\n"#doc.at('body').inner_text
 	
-	say m.from,"" 
+	say m.from, "" 
 end
 message :chat?,:body do |m|
 	start = Time.now.strftime("%Y-%m-%d")
@@ -83,7 +83,8 @@ message :chat?,:body do |m|
 		status=Blather::Stanza::Presence::Status.new(:available,"#{m.body}")
 		write_to_stream status
 	end
-        response = "Available Options : \n 1. Grading Statistics : _gstats <dept_code> <course_number> <year>_ \n 2.Search Wiki : _search <term> to search on wiki_ \n3.Course Info : _info <dept_code> <course_number>_ \n E.g. <dept_code> : cs \n <course_number>:101\n"#doc.at('body').inner_text
+        
+response = "Available Options : \n 1. Grading Statistics: e.g. _gstats ee 111 2010_ \n 2.Search Wiki: e.g. _search tagging_ \n3.Course Info: e.g. _info cs 101_\n"#doc.at('body').inner_text
 	
 	say m.from, response
 end
