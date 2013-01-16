@@ -84,7 +84,7 @@ message :chat?,:body do |m|
 		write_to_stream status
 	end
         
-response = "Available Options : \n 1. Grading Statistics: e.g. _gstats ee 111 2010_ \n 2.Search Wiki: e.g. _search tagging_ \n3.Course Info: e.g. _info cs 101_\n"#doc.at('body').inner_text
+response = "Available Options : \n 1. Grading Statistics: e.g. _gstats ee 111 2010_ \n 2.Search Wiki: e.g. _search tagging_ \n3.Course Info: e.g. _info cs 101_"
 	
-	say m.from, response
+	say m.from, "#{response}"
 end
