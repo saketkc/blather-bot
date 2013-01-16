@@ -55,12 +55,12 @@ message :chat?,:body => /search/i do |m|
 end
 
 
-message :chat?,:body => /updatestatus/ do |m|
+message :chat?,:body => /updatestatus/i do |m|
 	start = Time.now.strftime("%Y-%m-%d")
 	endtime = Time.now + (24*60*60)
 	ends = endtime.strftime("%Y-%m-%d")
 	sender = "#{m.from}"
-	body = m.body.split("/")
+	body = m.body.split("@@")
 	status_b = body[1]
 	status=Blather::Stanza::Presence::Status.new(:available,"#{status_b}")
 	write_to_stream status
