@@ -55,6 +55,24 @@ message :chat?,:body => /search/i do |m|
 end
 
 
+message :chat?,:body => /updatestatus/ do |m|
+	start = Time.now.strftime("%Y-%m-%d")
+	endtime = Time.now + (24*60*60)
+	ends = endtime.strftime("%Y-%m-%d")
+	sender = "#{m.from}"
+	body = m.body.split("/")
+	status_b = body[1]
+	status=Blather::Stanza::Presence::Status.new(:available,"#{status_b}")
+	write_to_stream status
+#	sender_a = sender.split("@")[0]	
+	#if sender_a=="aaaiitb" then	
+	#	status=Blather::Stanza::Presence::Status.new(:available,"#{m.body}")
+	#	write_to_stream status
+#	end
+ #       response = "Available Options : \n 1. Grading Statistics : _gstats <dept_code> <course_number> <year>_ \n 2.Search Wiki : _search <term> to search on wiki_ \n3.Course Info : _info <dept_code> <course_number>_ \n E.g. <dept_code> : cs \n <course_number>:101\n"#doc.at('body').inner_text
+	
+#	say m.from, response
+end
 message :chat?,:body do |m|
 	start = Time.now.strftime("%Y-%m-%d")
 	endtime = Time.now + (24*60*60)
