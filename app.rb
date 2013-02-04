@@ -1,6 +1,3 @@
-
-
-
 require 'rubygems'
 require 'blather'
 require 'blather/client'
