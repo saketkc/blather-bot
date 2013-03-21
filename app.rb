@@ -14,7 +14,7 @@ def http_get(domain,path,params)
     return Net::HTTP.get(domain, "#{path}?".concat(params.collect { |k,v| "#{k}=#{CGI::escape(v.to_s)}" }.reverse.join('&'))) if not params.nil?
     return Net::HTTP.get(domain, path)
 end
-setup 'aardvark@jabber.org','fedora13'#ENV['JID'], ENV['JPASSWORD']
+setup ENV['JID'], ENV['JPASSWORD']
 subscription :request? do |s|
 	write_to_stream s.approve!
 end
@@ -28,7 +28,7 @@ message :chat?,:body => /gstats/i do |m|
 	course_no = body[2]
 	year = body[3]
 	params = {"txtweb-message" => "gstats cs 101 2010"}
-	url = "http://prashant7891.appspot.com/?txtweb-message=gstats+"+"#{dept}+"+"#{course_no}+"+"#{year}"
+	url = "http://gymkhana.iitb.ac.in/~ugacademics/2.php?param1=gstats&param2="+"#{dept}+"+"&param3="+"#{course_no}+"+"&param4="+"#{year}"
         doc = Nokogiri::HTML(open url)
         response = doc.at('body').inner_text
 	say m.from, "#{response}"
@@ -40,7 +40,7 @@ message :chat?,:body => /info/i do |m|
 	course_no = body[2]
 	
 	params = {"txtweb-message" => "gstats cs 101 2010"}
-	url = "http://home.iitb.ac.in/~saket.kumar/2.php?param1=courseinfo&param2="+"#{dept}"+"&param3="+"#{course_no}"+"&param4=0"
+	url = "http://gymkhana.iitb.ac.in/~ugacademics/2.php?param1=courseinfo&param2="+"#{dept}"+"&param3="+"#{course_no}"+"&param4=0"
 	doc = Nokogiri::HTML(open url)
         response = doc.at('body').inner_text
 	say m.from, "#{response}"
