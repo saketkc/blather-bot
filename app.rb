@@ -13,7 +13,8 @@ def http_get(domain,path,params)
     return Net::HTTP.get(domain, "#{path}?".concat(params.collect { |k,v| "#{k}=#{CGI::escape(v.to_s)}" }.reverse.join('&'))) if not params.nil?
     return Net::HTTP.get(domain, path)
 end
-setup ENV['JID'], ENV['JPASSWORD']
+#setup ENV['JID'], ENV['JPASSWORD']
+setup 'aardvark@jabber.org', 'fedora13'
 subscription :request? do |s|
 	write_to_stream s.approve!
 end
@@ -22,17 +23,17 @@ status=Blather::Stanza::Presence::Status.new(:available,"_*Testing*_")
 write_to_stream status
 }
 
-#message :chat?,:body => /gstats/i do |m|
-#	body=m.body.split(" ")
-#	dept = body[1]
-#	course_no = body[2]
-#	year = body[3]
-#	params = {"txtweb-message" => "gstats cs 101 2010"}
-#	url = "http://gymkhana.iitb.ac.in/~ugacademics/2.php?param1=gstats&param2="+"#{dept}"+"&param3="+"#{course_no}"+"&param4="+"#{year}"
- #       doc = Nokogiri::HTML(open url)
-  #      response = doc.at('body').inner_text#
-#	say m.from, "#{response}"
-#end	
+message :chat?,:body => /gstats/i do |m|
+	body=m.body.split(" ")
+	dept = body[1]
+	course_no = body[2]
+	year = body[3]
+	params = {"txtweb-message" => "gstats cs 101 2010"}
+	url = "http://gymkhana.iitb.ac.in/~ugacademics/2.php?param1=gstats&param2="+"#{dept}"+"&param3="+"#{course_no}"+"&param4="+"#{year}"
+       doc = Nokogiri::HTML(open url)
+      response = doc.at('body').inner_text#
+	say m.from, "#{response}"
+end
 
 message :chat?,:body => /info/i do |m|
 	body=m.body.split(" ")
