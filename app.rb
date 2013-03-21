@@ -1,4 +1,3 @@
-
 require 'rubygems'
 require 'blather'
 require 'blather/client'
@@ -22,17 +21,18 @@ when_ready {
 status=Blather::Stanza::Presence::Status.new(:available,"_*Testing*_")
 write_to_stream status
 }
-message :chat?,:body => /gstats/i do |m|
-	body=m.body.split(" ")
-	dept = body[1]
-	course_no = body[2]
-	year = body[3]
-	params = {"txtweb-message" => "gstats cs 101 2010"}
-	url = "http://gymkhana.iitb.ac.in/~ugacademics/2.php?param1=gstats&param2="+"#{dept}"+"&param3="+"#{course_no}"+"&param4="+"#{year}"
-        doc = Nokogiri::HTML(open url)
-        response = doc.at('body').inner_text
-	say m.from, "#{response}"
-end	
+
+#message :chat?,:body => /gstats/i do |m|
+#	body=m.body.split(" ")
+#	dept = body[1]
+#	course_no = body[2]
+#	year = body[3]
+#	params = {"txtweb-message" => "gstats cs 101 2010"}
+#	url = "http://gymkhana.iitb.ac.in/~ugacademics/2.php?param1=gstats&param2="+"#{dept}"+"&param3="+"#{course_no}"+"&param4="+"#{year}"
+ #       doc = Nokogiri::HTML(open url)
+  #      response = doc.at('body').inner_text#
+#	say m.from, "#{response}"
+#end	
 
 message :chat?,:body => /info/i do |m|
 	body=m.body.split(" ")
